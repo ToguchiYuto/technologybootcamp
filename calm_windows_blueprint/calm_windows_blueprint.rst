@@ -294,6 +294,8 @@ Copy and paste the following script into the **Script** field:
          [string]$Username,
          [parameter(Mandatory=$true)]
          [string]$Password,
+         [parameter(Mandatory=$true)]
+         [string]$Server
      )
      $adapter = Get-NetAdapter | ? {$_.Status -eq "up"}
      $adapter | Set-DnsClientServerAddress -ServerAddresses $Server
@@ -306,7 +308,7 @@ Copy and paste the following script into the **Script** field:
      Write-Host "Removed from domain @@{DOMAIN}@@"
    }
    
-   RemoveFromDomain -DomainName "@@{DOMAIN}@@" -Username "@@{DOMAIN_CRED.username}@@" -Password "@@{DOMAIN_CRED.secret}@@"
+   RemoveFromDomain -DomainName "@@{DOMAIN}@@" -Username "@@{DOMAIN_CRED.username}@@" -Password "@@{DOMAIN_CRED.secret}@@" -Server "@@{AD_IP}@@"
 
 
 .. note::
